@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alkatra&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <title>Guess The Number</title>
+</head>
+<body>
+    <section class="bodysec">
+        <img src="media/body_background.jpg">
+        <section class="insidesec">
+            <div class="div1">
+                <h2>HOW TO PLAY?</h2>
+                <h3>Step 1</h3>
+                <p>Click the <b style="color:aqua;">'Play Game!'</b> button to start the game!</p>
+                <h3>Step 2</h3>
+                <p>A sentence will appear. Than enter a number in the <b style="color:aqua;">"Enter Your Guess"</b> box as mentioned in that sentence and click the <b style="color:aqua;">"Make a Guess"</b> button.</p>
+                <h3>Step 3</h3>
+                <p>If you want to play again, click the <b style="color:aqua;">"Start Again!"</b> button.</p>
+            </div>
+            <div class="div2">
+                <h2>Guess The Number!</h2>              
+                <p id="intro"></p>
+                <button onclick="randnum();" id="myButton1">Play Game!</button><br>
+                <div class="divinput">Enter Your Guess : <input type="number" id="userguess"><br></div>
+                <button onclick="guess()">Make a Guess</button>
+                <p id="ans" ><a><i class="fa-sharp fa-solid fa-lightbulb"></i></a></p>
+                <button  onClick="window.location.reload()">Start Again!</button>
+            </div>
+        </section>
+    </section>
+    <script>
+        function randnum()
+        {
+            var gennum = Math.floor(Math.random() * 100);
+            window.gennum2 = gennum; //declare globel variable
+            // console.log(gennum)
+            if (gennum >= 0 && gennum <= 20) 
+            {
+                document.getElementById('intro').innerHTML = "I have thought of a number between 0 and 20! See if you can guess the number."
+            }
+            else if (gennum >= 20 && gennum <= 40) 
+            {
+                document.getElementById('intro').innerHTML = "I have thought of a number between 20 and 40! See if you can guess the number."
+            } 
+            else if (gennum >= 40 && gennum <= 60) 
+            {
+                document.getElementById('intro').innerHTML = "I have thought of a number between 40 and 60! See if you can guess the number."
+            }
+            else if (gennum >= 60 && gennum <= 80) 
+            {
+                document.getElementById('intro').innerHTML = "I have thought of a number between 60 and 80! See if you can guess the number."
+            } 
+            else if (gennum >= 80 && gennum <= 100) 
+            {
+                document.getElementById('intro').innerHTML = "I have thought of a number between 80 and 100! See if you can guess the number."
+            }  
+        }
+
+        function guess() 
+        {
+            var guessnum = Number(document.getElementById('userguess').value);    
+
+            if (guessnum > gennum2) 
+            {
+                document.getElementById('ans').innerHTML = "A Little High! Try Again!" 
+            }
+            else if(guessnum < gennum2)
+            {
+                document.getElementById('ans').innerHTML = "A Little Low! Try Again!" 
+            }
+            else if(guessnum == gennum2)
+            {
+                document.getElementById('ans').innerHTML = "Congratulation! You Make The Right Guess!" 
+            }
+            else
+            {
+                document.getElementById('ans').innerHTML = "Invalid Number! Try Again!" 
+            }
+        }
+
+            $('#myButton1').click(function(){
+                $(this).remove();
+            });
+/////////////////////////////////////////
+            //  Change play button on click to play again button
+            // const btn = document.getElementById('myButton1');
+            // btn.addEventListener
+            // ('click', 
+            // function handleClick() 
+            // {
+            // btn.textContent = 'Play Again!';
+            // }
+            // );
+//////////////////////////////////////////////
+            // hide play button
+            // function hideButton()
+            // {
+            // document.getElementById('myButton1').style.visibility= 'hidden';
+            // }
+    </script>
+</body>
+</html>
